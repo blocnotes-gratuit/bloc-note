@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloc-notes en ligne - Créez, Modifiez et Enregistrez des Notes</title>
+<meta name="description" content="Utilisez notre bloc-notes en ligne pour créer, modifier et enregistrer facilement des notes. Personnalisez les polices, les tailles, les couleurs et plus encore.">
+<link rel="icon" href="favicon.png" type="image/x-icon">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.1/spectrum.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="style.css">
+   <!-- Bibliothèque jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bibliothèque jQuery UI -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.1/spectrum.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.7/js/min/perfect-scrollbar.jquery.min.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-092S2D7PHG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-092S2D7PHG');
+</script>
+
+</head>
+<body>
+    
+    <h1>Bloc-notes en ligne</h1>
+
+    <div class="container">
+        <!-- Barre latérale gauche pour la publicité -->
+        <div class="sidebar">
+          <!-- Ajoutez votre code de publicité pour la barre latérale gauche ici -->
+        </div>
+        <!-- Contenu principal -->
+        <div class="main-content">
+            <header>
+                <nav>
+                    <div class="wrap">
+                        <div class="toolbar">
+                            <button id="bold" data-tooltip="Gras (Ctrl+B)"><i class="fa fa-bold"></i></button>
+                            <button id="italic" data-tooltip="Italique (Ctrl+I)"><i class="fa fa-italic"></i></button>
+                            <button id="underline" data-tooltip="Souligner (Ctrl+U)"><i class="fa fa-underline"></i></button>
+                               <select name="fonts" id="fonts">
+    <option value="Arial" style="font-family: Arial, sans-serif;" selected>Arial</option>
+    <option value="Georgia" style="font-family: Georgia, serif;">Georgia</option>
+    <option value="Tahoma" style="font-family: Tahoma, sans-serif;">Tahoma</option>
+    <option value="Times New Roman" style="font-family: 'Times New Roman', Times, serif;">Times New Roman</option>
+    <option value="Verdana" style="font-family: Verdana, sans-serif;">Verdana</option>
+    <option value="Impact" style="font-family: Impact, sans-serif;">Impact</option>
+    <option value="Courier New" style="font-family: 'Courier New', Courier, monospace;">Courier New</option>
+    <!-- Polices populaires supplémentaires -->
+    <option value="Roboto" style="font-family: Roboto, sans-serif;">Roboto</option>
+    <option value="Open Sans" style="font-family: 'Open Sans', sans-serif;">Open Sans</option>
+    <option value="Montserrat" style="font-family: Montserrat, sans-serif;">Montserrat</option>
+    <option value="Lato" style="font-family: Lato, sans-serif;">Lato</option>
+    <option value="Ubuntu" style="font-family: Ubuntu, sans-serif;">Ubuntu</option>
+    <option value="Helvetica" style="font-family: Helvetica, Arial, sans-serif;">Helvetica</option>
+    <option value="Garamond" style="font-family: Garamond, serif;">Garamond</option>
+    <option value="Futura" style="font-family: Futura, sans-serif;">Futura</option>
+    <option value="Arial Black" style="font-family: 'Arial Black', sans-serif;">Arial Black</option>
+    <option value="Century Gothic" style="font-family: 'Century Gothic', sans-serif;">Century Gothic</option>
+</select>
+                            <select name="size" id="size">
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                                <option value="12">12</option>
+                                <option value="14">14</option>
+                                <option value="16" selected>16</option>
+                                <option value="18">18</option>
+                                <option value="20">20</option>
+                                <option value="22">22</option>
+                                <option value="24">24</option>
+                                <option value="26">26</option>
+                            </select>
+                            <input type="text" id="color" />
+                            <button id="align-left" data-tooltip="Gauche"><i class="fa fa-align-left"></i></button>
+                            <button id="align-center" data-tooltip="Centré"><i class="fa fa-align-center"></i></button>
+                            <button id="align-right" data-tooltip="Droite"><i class="fa fa-align-right"></i></button>
+                            <button id="list-ul" data-tooltip="Liste non ordonnée"><i class="fa fa-list-ul"></i></button>
+                            <button id="list-ol" data-tooltip="Liste ordonnée"><i class="fa fa-list-ol"></i></button>
+                            <button id="new_document" data-tooltip="Nouveau document"><i class="fas fa-file"></i></button>
+                            <button id="open_file_button" data-tooltip="Ouvrir un fichier"><i class="fas fa-file-alt"></i></button>
+                            <button id="save_file" data-tooltip="Enregistrer le fichier"><i class="fas fa-file-download"></i></button>
+                            <div id="save_dialog" class="save-dialog">
+                                <div class="save-dialog-content">
+                                  <span class="close">&times;</span>
+                                  <input type="text" id="filename" placeholder="Entrez un nom de fichier">
+                                  <div class="button-container">
+                                    <button id="save_txt" class="save-button">Enregistrer comme TXT</button>
+                                    <button id="save_doc" class="save-button">Enregistrer comme DOC</button>
+                                    <button id="save_pdf" class="save-button">Enregistrer comme PDF</button>
+                                  </div>
+                                </div>
+                              </div>
+                            <button id="print_button" data-tooltip="Imprimer" onclick="printContent()"><i class="fas fa-print"></i></button>
+                            <button id="undo_button" data-tooltip="Annuler"><i class="fas fa-undo"></i></button>
+                            <button id="redo_button" data-tooltip="Rétablir"><i class="fas fa-redo"></i></button>
+                            <button id="cut_button" data-tooltip="Couper"><i class="fas fa-cut"></i></button>
+                            <button id="copy_button" data-tooltip="Copier"><i class="fas fa-copy"></i></button>
+                            <button id="paste_button" data-tooltip="Coller"><i class="fas fa-paste"></i></button>
+<button id="find_replace_button" data-tooltip="Rechercher et remplacer"><i class="fas fa-search"></i></button>
+
+<div id="find_replace_dialog" class="dialog">
+    <h3>Rechercher et remplacer</h3>
+    <div class="input-group">
+        <label for="find_input">Rechercher :</label>
+        <input type="text" id="find_input">
+    </div>
+    <div class="input-group">
+        <label for="replace_input">Remplacer :</label>
+        <input type="text" id="replace_input">
+    </div>
+    <div class="button-group">
+        <button id="find_button">Rechercher</button>
+        <button id="replace_button">Remplacer</button>
+        <button id="replace_all_button">Remplacer tout</button>
+        <button id="close_dialog_button">Fermer</button>
+    </div>
+</div>
+<button id="insert_image_url_button" data-tooltip="Insérer une image à partir de l'URL"><i class="fas fa-image"></i></button>
+<button id="insert_image_device_button" data-tooltip="Insérer une image depuis l'appareil"><i class="fas fa-upload"></i></button>
+                            <button id="insert_link_button" data-tooltip="Insérer un lien"><i class="fas fa-link"></i></button>
+                            <button id="shortcutButton" data-tooltip="shortcutkeys">
+                                <i class="fa fa-keyboard"></i> </button>
+                             <div class="dropdown">
+                                <button data-tooltip="templates" onclick="toggleDropdown()" class="dropbtn"><i class="fas fa-th-list"></i></button>
+                                <div id="templateDropdown" class="dropdown-content">
+                                </div>
+                            <div id="shortcutMenu" style="display: none;"></div>
+                        </div>
+                        <div class="editor" contenteditable></div>
+<div class="headline">
+                            <p><b>Si vous avez apprécié mon bloc-notes, n'hésitez pas à le partager avec vos amis</b></p>
+                          </div>
+                          <div class="social-buttons">        
+                          <!-- WhatsApp Button -->
+                      <a href="whatsapp://send?text=Consultez%20ce%20génial%20bloc-notes! " data-action="share/whatsapp/share" target="_blank" class="social-margin">
+                          <div class="social-icon whatsapp">
+                            <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                          </div>
+                        </a>      
+                          <!-- facebook  Button -->
+                                  <a href="http://www.facebook.com" target="blank" class="social-margin"> 
+                                    <div class="social-icon facebook">
+                                      <i class="fa fa-facebook" aria-hidden="true"></i> 
+                                    </div>
+                                  </a>
+                                  <!-- Pinterest Button -->
+                      <a href="https://pinterest.com/" target="_blank" class="social-margin">
+                        <div class="social-icon pinterest">
+                          <i class="fa fa-pinterest" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                                  
+                            <!-- TwitterButton -->
+                                  <a href="http://twitter.com/" target="blank" class="social-margin">
+                                    <div class="social-icon twitter">
+                                      <i class="fa fa-twitter" aria-hidden="true"></i>
+                                    </div> 
+                                  </a>
+                       
+                      <!-- Reddit Button -->
+                      <a href="https://reddit.com/" target="_blank" class="social-margin">
+                        <div class="social-icon reddit">
+                          <i class="fa fa-reddit" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <!-- Quora Button -->
+                      <a href="https://www.quora.com/" target="_blank" class="social-margin">
+                        <div class="social-icon quora">
+                          <i class="fa fa-quora" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      
+                      <!-- Telegram Button -->
+                      <a href="https://telegram.org/" target="_blank" class="social-margin">
+                        <div class="social-icon telegram">
+                          <i class="fa fa-telegram" aria-hidden="true"></i>
+                        </div>
+                      </a>
+                      <!-- LinkedIn Button -->
+                      <a href="http://linkedin.com/" class="social-margin" target="blank">
+                          <div class="social-icon linkedin">
+                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                          </div> 
+                        </a>         
+                        </nav>
+            </header>
+        </div>
+        <!-- Barre latérale droite pour la publicité -->
+        <div class="sidebar">
+          <!-- ad link paste here -->
+        </div>
+    </div>
+     <footer>
+        <ul>
+           <li><a href="https://bloc-notes.net">Accueil</a></li>
+            <li><a href="à-propos.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="politique-de-confidentialité.html">Politique de confidentialité</a></li>
+            <li><a href="désistement.html">Désistement</a></li>
+            <li><a href="termes-et-conditions.html">Termes et conditions</a></li>
+        </ul>
+            <br>
+        <p>&copy; 2024 <a href="https://bloc-notes.net">bloc-notes.net</a> Tous droits réservés.</p>
+    </footer>
+    
+  
+    <script src="script.js"></script>
+
+</body>
+</html>
