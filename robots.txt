@@ -1,4 +1,2 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
-sitemap: https://bloc-notes.net/sitemap.xml
+sitemap: https://blocnotes-gratuit.github.io/bloc-note/sitemap.xml
